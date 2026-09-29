@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timeless Chat</title>
+    <link rel="stylesheet" href="/public/styles.css" />
+  </head>
+  <body>
+    <div class="bg-orbs" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="shell">
+      <section class="auth-screen" id="authScreen">
+        <div class="auth-card">
+          <h1>Timeless Chat</h1>
+          <p class="sub">Login or create an account to start chatting.</p>
+
+          <div class="tab-row">
+            <button class="tab active" id="showLoginBtn" type="button">Login</button>
+            <button class="tab" id="showRegisterBtn" type="button">Register</button>
+          </div>
+
+          <form id="loginForm" class="form">
+            <label>
+              Username
+              <input type="text" name="username" required />
+            </label>
+            <label>
+              Password
+              <input type="password" name="password" required />
+            </label>
+            <button type="submit" class="primary">Login</button>
+          </form>
+
+          <form id="registerForm" class="form hidden">
+            <label>
+              Display Name
+              <input type="text" name="displayName" required />
+            </label>
+            <label>
+              Username
+              <input type="text" name="username" required />
+            </label>
+            <label>
+              Password
+              <input type="password" name="password" minlength="6" required />
+            </label>
+            <label>
+              About
+              <input type="text" name="about" placeholder="Short bio..." />
+            </label>
+            <button type="submit" class="primary">Create Account</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="chat-screen hidden" id="chatScreen">
+        <aside class="sidebar">
+          <div class="me">
+            <div>
+              <h2 id="meName">My Name</h2>
+              <p id="meAbout">About</p>
+            </div>
+            <button id="logoutBtn" type="button" class="ghost">Logout</button>
+          </div>
+          <h3>Conversations</h3>
+          <ul id="userList" class="user-list"></ul>
+        </aside>
+
+        <main class="chat-panel">
+          <header class="chat-header" id="chatHeader">
+            Select someone to start chatting
+          </header>
+
+          <div id="messages" class="messages">
+            <p class="empty">Your messages will appear here.</p>
+          </div>
+
+          <form id="composerForm" class="composer">
+            <label for="mediaInput" class="attach" title="Send image or video">+</label>
+            <input id="mediaInput" type="file" accept="image/*,video/*" hidden />
+            <input
+              id="messageInput"
+              type="text"
+              placeholder="Type a message"
+              autocomplete="off"
+            />
+            <button type="submit" class="primary">Send</button>
+          </form>
+        </main>
+      </section>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/public/app.js"></script>
+  </body>
+</html>
